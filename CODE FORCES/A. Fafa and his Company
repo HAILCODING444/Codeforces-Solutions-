@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+
+int main()
+{
+    ll n ; 
+    cin>>n ; 
+    
+    ll ans =1; 
+    
+    for(ll i=2 ; i<=n/2 ; i++){
+        ll x = n-i ; 
+        if(x%i ==0 && i <= x) ans++ ; 
+    }
+    
+    cout<<ans ; 
+    return 0;
+}
