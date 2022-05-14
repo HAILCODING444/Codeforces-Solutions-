@@ -1,0 +1,62 @@
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string a ; 
+    cin>>a ;
+     
+    int n = a.size() ;
+    int k =-1;
+    bool flagh = 0 ; 
+    for(int i=0 ; i<n ; i++){
+        if(a[i] == 'h'){
+            k=i ;
+            flagh = 1 ;  
+            break ; 
+        }
+    }
+    
+    bool flage = 0 ; 
+    for(int i=k+1 ; i<n ; i++){
+        if(a[i] == 'e'){
+            k=i ;
+            flage = 1 ;  
+            break ; 
+        }
+    }
+    bool flagl = 0 ; 
+    for(int i=k+1 ; i<n ; i++){
+        if(a[i] == 'l'){
+            k=i ;
+            flagl = 1 ;  
+            break ; 
+        }
+    }
+    
+    bool flagll = 0 ; 
+    for(int i=k+1 ; i<n ; i++){
+        if(a[i] == 'l'){
+            k=i ;
+            flagll = 1 ;  
+            break ; 
+        }
+    }
+    
+    bool flago = 0 ; 
+    for(int i=k+1 ; i<n ; i++){
+        if(a[i] == 'o'){
+            k=i ;
+            flago = 1 ;  
+            break ; 
+        }
+    }
+    
+    if(!flagh || !flage || !flagl || !flagll || !flago ) cout<<"NO" ; 
+    else cout<<"YES" ; 
+
+    return 0;
+}

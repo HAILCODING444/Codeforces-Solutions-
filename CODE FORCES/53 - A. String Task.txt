@@ -1,0 +1,31 @@
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string a ; 
+    cin>>a ; 
+    int n = a.size() ; 
+    int i=0 ;
+    string ans = "" ; 
+    while( i < n ){
+        if(a[i] == 'A' || a[i] == 'E' || a[i] == 'I' || a[i] == 'O' || a[i] == 'U' || a[i] == 'a' ||a[i] == 'e' ||a[i] == 'i' ||a[i] == 'o' ||a[i] == 'u' || a[i] == 'Y' || a[i] == 'y'){
+            i++ ; 
+            continue ; 
+        }
+        if(a[i] >= 'A' && a[i] <= 'Z'){
+            ans += '.' ;
+            ans += a[i] - 'A' + 'a' ;
+        }
+        if(a[i] >= 'a' && a[i] <= 'z'){
+            ans += '.' ;
+            ans += a[i] ; 
+        }
+        i++ ; 
+    }
+    cout<<ans ;
+
+    return 0;
+}

@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int a , b ; 
+    cin>>a>>b ;
+    // a = 3 ; 
+    // b = 5 ; 
+    bool flag1 = 1 ; 
+    int i = a+1 ; 
+    while(i<= b){
+        bool flag = true ;
+        for(int j =2 ; j<= sqrt(i); j++){
+            if(i % j == 0){
+                flag = false ; 
+                break ; 
+            }
+        }
+        if(flag == true && i==b ){
+            flag1 = 0 ; 
+            cout<<"YES" ; 
+            break ; 
+        }else if(flag == true){
+            break ; 
+        }
+        i++ ; 
+    }
+    
+    if(flag1){
+        cout<<"NO" ; 
+    }
+    
+    return 0;
+}

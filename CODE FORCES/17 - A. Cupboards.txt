@@ -1,0 +1,39 @@
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t ;
+    cin>>t ;
+    int countaone =0 ; 
+    int countazero = 0 ; 
+    int countbone =0 ; 
+    int countbzero = 0 ; 
+    while(t--){
+        int a ; 
+        cin>>a ; 
+        if(a==0){
+           countazero++ ;  
+        }else{
+           countaone++ ; 
+        }
+        
+        
+        int b ; 
+        cin>>b ; 
+        if(b==0){
+           countbzero++ ;  
+        }else{
+           countbone++ ;  
+        }
+        
+    }
+    
+    int ans = min(countazero , countaone) + min(countbzero , countbone) ; 
+    
+    cout<<ans ; 
+
+    return 0;
+}

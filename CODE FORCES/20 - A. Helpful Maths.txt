@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string a ;
+    cin>>a ;
+    int n = a.length() ;
+    bool flag = false ; 
+    for(int j=0 ; j< n ; j++){
+        if(n == 1){
+            flag = true ; 
+            cout<<a ;
+            break ; 
+        } 
+        for(int i=0 ; i<n-2 ; i++ ){
+            if(a.at(i) > a.at(i+2)){
+                char temp = a.at(i) ; 
+                a.at(i) = a.at(i+2) ; 
+                a.at(i+2) = temp ;
+            }
+        }
+    }
+    
+    if(!flag) cout<<a ;
+
+    return 0;
+}

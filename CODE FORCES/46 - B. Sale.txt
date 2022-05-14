@@ -1,0 +1,33 @@
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n , m;
+    cin>>n>>m ;
+    int count =0 ; 
+    vector<int> a ; 
+    while(n--){
+        int x ; 
+        cin>>x ;
+        a.push_back(x) ; 
+    }
+    
+    sort(a.begin() , a.end()) ; 
+    
+    for(int i=0 ; i<a.size() ; i++){
+        if(a[i] < 0){
+            --m;
+            count+= -(a[i]) ; 
+        }
+        if(m ==0){
+            break ; 
+        }
+    }
+    cout<<count ;
+
+    return 0;
+}

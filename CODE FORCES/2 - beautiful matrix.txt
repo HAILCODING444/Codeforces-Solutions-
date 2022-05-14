@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+void steps(int row , int col , int &count ){
+  if(row == 3 && col == 3){
+      cout<<count<<endl ; 
+      return ;
+  }
+  if(row > 3)      { steps(row-1 , col , ++count) ; }
+  
+  else if(row < 3) { steps(row+1 , col , ++count) ; }
+  
+  else if(col < 3) { steps(row , col+1 , ++count) ; }
+  
+  else if(col > 3) { steps(row , col-1 , ++count) ; }
+}
+
+int main() 
+{
+    int n ; 
+    int row = 1 ; 
+    int col = 1 ; 
+    while(row <= 5 ){
+      cin>>n ;
+      if(n == 1){
+        break ; 
+      }
+      if(col == 5){
+        col = 0 ; 
+        row++ ; 
+      }
+      col++ ; 
+    }
+    int count = 0 ; 
+    steps(row , col , count) ; 
+    
+    return 0;
+}

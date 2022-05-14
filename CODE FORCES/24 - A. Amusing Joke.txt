@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    vector<int> a(25 , 0) ; 
+    string b , c , d  ; 
+    cin>>b>>c>>d ; 
+    int n = b.size() ;
+    int m = c.size() ; 
+    int k = d.size() ; 
+    
+    for(int i=0 ; i<n; i++){
+        a[b[i] - 'A']++ ; 
+    }
+    for(int i=0 ; i<m; i++){
+        a[c[i] - 'A']++ ; 
+    }
+    for(int i=0 ; i<k; i++){
+        a[d[i] - 'A']-- ; 
+    }
+    bool flag = false ; 
+    for(int i=0 ; i<a.size() ; i++){
+        if(a[i] != 0){
+            flag = true ; 
+            break ; 
+        }
+    }
+    
+    if(flag) cout<<"NO" ; 
+    else cout<<"YES" ; 
+    
+    return 0;
+}

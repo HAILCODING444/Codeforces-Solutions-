@@ -1,0 +1,55 @@
+
+#include <iostream>
+
+using namespace std;
+
+void tosmall(string a){
+    int n = a.size() ; 
+    int i =0 ; 
+    while( i<n ){
+        if(a[i] <= 'Z'){
+            a[i] = a[i] - 'A' + 'a'  ; 
+        }
+        i++ ; 
+    }
+    cout<<a<<endl ; 
+}
+
+void tocapital(string a){
+    int n = a.size() ; 
+    int i =0 ; 
+    while( i<n ){
+        if(a[i] >= 'a'){
+            a[i] = a[i] - 'a' + 'A' ; 
+        }
+        i++ ; 
+    }
+    cout<<a<<endl ; 
+}
+
+int main()
+{
+    string a ; 
+    cin>>a ;
+    int n = a.size() ; 
+    int i=0 ;
+    int capital = 0 ; 
+    int small = 0 ; 
+    while(i<n){
+        char ch = a[i] ; 
+        if(ch >= 'a' && ch <= 'z'){
+            ++small ; 
+        }else{
+            ++capital ; 
+        }
+        i++ ; 
+    }
+    
+    if(capital <= small){
+        tosmall(a) ; 
+    }else{
+        tocapital(a) ; 
+    }
+
+    return 0;
+}

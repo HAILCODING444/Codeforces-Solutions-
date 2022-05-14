@@ -1,0 +1,45 @@
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+#define ll long long 
+
+int main ()
+{
+  ll int n;
+  cin >> n;
+  
+  vector <ll int>ans;
+  unordered_map <ll int, ll int >m;
+  
+  ll int maxi = INT_MIN ;
+  ll int mini = INT_MAX ; 
+  while (n--)
+  {
+      ll int x;
+      cin >> x;
+      ans.push_back (x);
+      m[x]++;
+      maxi = max(maxi , x) ;
+      mini = min(mini , x) ; 
+  }
+
+  sort (ans.begin (), ans.end ());
+  ll int k = ans.size ();
+  ll int res = ans[k - 1] - ans[0];
+  ll int total ; 
+  if(mini != maxi){
+      auto it = m.find (ans[k-1]);
+      ll int maxtimes = it->second;
+      
+      it = m.find (ans[0]);
+      ll int mintimes = it->second;
+      total = mintimes * maxtimes ;
+      
+  }
+  if(maxi == mini) total = (k*(k-1)) / 2 ; 
+  cout << res<<" "<<total;
+
+  return 0;
+}

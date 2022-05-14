@@ -1,0 +1,56 @@
+
+ 
+ 
+#include <bits/stdc++.h>
+ 
+using namespace std;
+int main()
+{
+    int r , c ; 
+    cin>>r>>c ; 
+    // int r =4 , c=4 ; 
+    vector <string> a ;
+    // char a[r][c] = {{'.' , '-','-','.'},{'.' , '.','.','.'},{'.' , '-','.','-'},{'.' , '.','.','.'}} ;
+    for(int i=0 ; i<r ; i++){
+        string s ; 
+        cin>>s ; 
+        a.push_back(s) ; 
+    }
+    // cout<<"Hello World"<<endl ;
+    bool flag = false ;
+    char ch ='B'; 
+    for(int i=0 ; i<r ; i++){
+        if(i%2 == 0){ 
+            flag = false ;
+            ch = 'B' ; 
+        }else if(i%2 != 0){
+            flag = true ;
+            ch = 'W' ; 
+        } ; 
+        for(int j=0 ; j<c ; j++){
+            if(!flag){
+                if(a[i][j] == '.'){
+                    a[i][j] = ch ; 
+                }
+                flag = true ;
+                ch = 'W' ; 
+            }else if(flag){
+                if(a[i][j] == '.'){
+                    a[i][j] = ch ; 
+                }
+                flag = false ; 
+                ch = 'B' ; 
+            } 
+        }
+    }
+    
+     for(int i=0 ; i<r ; i++){
+        for(int j=0 ; j<c ; j++){
+            cout<<a[i][j]; 
+        }
+        cout<<endl ; 
+    }
+    
+ 
+    return 0;
+}

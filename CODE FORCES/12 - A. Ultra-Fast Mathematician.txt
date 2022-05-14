@@ -1,0 +1,26 @@
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string a , b ; 
+    cin>>a>>b ; 
+    int n = a.size() ;
+    string ans = "" ; 
+    int i=0 ; 
+    while(i < n){
+        char y = a.at(i) ; 
+        char z = b.at(i) ; 
+        if(y+z == ('1'+'0')){
+            ans+='1' ; 
+        }else{
+            ans+='0' ; 
+        }
+        i++ ; 
+    }
+    cout<<ans;
+
+    return 0;
+}

@@ -1,0 +1,48 @@
+ 
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    int a ; 
+    cin>>a ; 
+    vector<int> arr1 ; 
+    while(a--){
+        int x ; 
+        cin>>x ; 
+        arr1.push_back(x) ; 
+    }
+    int b ; 
+    cin>>b ; 
+    vector<int> arr2 ; 
+    while(b--){
+        int y ; 
+        cin>>y ; 
+        arr2.push_back(y) ; 
+    }
+    
+    // int arr1[4] = {1 , 2 , 3, 4 } ; 
+    // int arr2[5] = {10 , 11 ,12 , 13 , 14 } ; 
+    int ans =0 ;
+    int min = INT_MIN ; 
+    int count =0 ; 
+    for(int i=0 ; i<arr1.size() ; i++){
+        for(int j=0 ; j<arr2.size() ; j++){
+          if(arr2[j] % arr1[i] == 0){
+            if(arr2[j]/arr1[i]  == min) ++count ; 
+            if(arr2[j]/arr1[i]  > min){
+                count = 0 ; 
+                count++ ; 
+                min = arr2[j]/arr1[i] ; 
+            }
+            if(arr2[j]/arr1[i] < min) continue ;
+          }else{
+            continue ;
+          }
+        }
+    }
+    cout<<count ;
+ 
+    return 0;
+}

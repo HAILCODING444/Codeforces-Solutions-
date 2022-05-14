@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string a ; 
+    cin>>a ;
+    int i=0 ; 
+    while(i < a.size()){
+        if(a[i] == 'W' && a[i+1] == 'U' && a[i+2] == 'B'){
+            cout<<" " ; 
+            i += 3 ; 
+        }else{
+            cout<<a[i] ; 
+            i+=1 ; 
+        }
+    }
+    // cout<<"Hello World";
+
+    return 0;
+}

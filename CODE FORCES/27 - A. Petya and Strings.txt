@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string a , b; 
+    cin>>a>>b ; 
+    int i=0 , j=0 ; 
+    int n = a.size() ;
+    int m = b.size() ; 
+    bool flag = 0 ; 
+    while(i<n && i<m){
+        if(a[i] >= 'A' && a[i] <= 'Z'){
+            a[i] = a[i] - 'A' + 'a' ; 
+        }
+        if(b[j] >= 'A' && b[j] <= 'Z'){
+            b[j] = b[j] - 'A' + 'a' ; 
+        }
+        
+        if(a[i] < b[j]){
+            flag = 1 ; 
+            cout<<-1 ; 
+            break ; 
+        }
+        
+        if(a[i] > b[j]){
+            flag = 1 ; 
+            cout<<1 ; 
+            break ; 
+        }
+        
+        i++;
+        j++;
+    }
+    
+    if(flag == 0) cout<<0 ; 
+    
+    return 0;
+}

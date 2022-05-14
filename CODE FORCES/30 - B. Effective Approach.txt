@@ -1,0 +1,36 @@
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int t ; 
+    cin>>t ;
+    int k = t ; 
+    int arr[t+1] ;
+    int i =1 ; 
+    while(t--){
+        int a ; 
+        cin>>a; 
+        arr[a] = i;
+        i++ ; 
+    }
+    
+    long long int LINEAR_FRONT = 0 ; 
+    long long int LINEAR_BACK = 0 ; 
+    int q ; 
+    cin>>q ; 
+    
+    while(q--){
+        int b ; 
+        cin>>b ; 
+        LINEAR_FRONT += arr[b] ; 
+        LINEAR_BACK  +=  k -arr[b]+1  ; 
+    }
+    
+    cout<<LINEAR_FRONT<<" "<<LINEAR_BACK  ;
+
+    return 0;
+}

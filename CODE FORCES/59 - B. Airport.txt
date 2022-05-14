@@ -1,0 +1,84 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    /* trial with arr 
+    int n = 4 , m = 3 ; 
+    int ma[3] = {2 , 2 , 2}  ; 
+    int mi[3] = {2 , 2, 2} ;
+    
+    */ 
+    
+    // if u coemment here to look below 
+    int n , m ; 
+    cin>>n>>m ;
+    vector <int> ma (m); 
+    vector <int> mi (m);
+    
+    // int x = m ; 
+    // while(x--){
+    //     int k ; 
+    //     cin>>k ; 
+    //     ma.push_back(k) ; 
+    //     mi.push_back(k) ; 
+    // }
+    for(int i=0 ; i<m ; i++){
+        int x ; 
+        cin>>x ; 
+        ma[i] = x ; 
+        mi[i] = x ; 
+    }
+    // here the vector part it works fine 
+    
+    int maxsum = 0 ; 
+    int z = n ;
+    sort(ma.begin() , ma.end()) ; 
+    int i = ma.size() ; 
+    while(z){
+        if(z==0) break ; 
+        while(true){
+            if(z==0) break ;
+            sort(ma.begin() , ma.end()) ; 
+            maxsum += ma[i-1] ; 
+            ma[i-1]-- ;
+            z-- ; 
+        }
+        // for(int i=0 ; i<m ; i++){
+        //     if(z==0) break ; 
+        //     maxsum += ma[i] ; 
+        //     ma[i] -=1 ; 
+        //     z-- ;
+        // }
+    }
+    
+    
+    sort(mi.begin() , mi.end()) ; 
+    int minisum = 0 ; 
+    int j = 0 ; 
+    int o = n ; 
+    while(o){
+        if(o ==0) break ;
+        while(1){
+            if(o ==0) break ;
+            if(mi[j] == 0 ) j++ ; 
+            minisum += mi[j] ; 
+            mi[j]-- ; 
+            o-- ; 
+        }
+        // for(int i=0 ; i<m ; i++){
+        //     if(o ==0) break ; 
+        //     while(mi[i] > 0){
+        //         if(o==0) break ; 
+        //         minisum += mi[i] ; 
+        //         mi[i]-- ; 
+        //         o-- ; 
+        //     }
+        // }
+    }
+    
+    cout<<maxsum<<" "<<minisum ; 
+ 
+    return 0;
+}

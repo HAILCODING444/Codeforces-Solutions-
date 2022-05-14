@@ -1,0 +1,13 @@
+Hello all .Welcome tom scratch maze.
+
+Keys to use ---------------------------------------------------------
+
+up arrow key-- Go up
+down arrow key-- Go down
+right arrow key--Go right
+left arrow key--Go left
+space key--Restart
+how to start --------------------------------------------------------
+
+when you will start the game you will on Loading Page.
+After it ,you will be on main page. Then there will be 4options . 1 . skins--you can change your by clicking on the sprite to change its skin skin after clicking on skins option.

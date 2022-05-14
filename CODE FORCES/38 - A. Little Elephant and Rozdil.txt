@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t ; 
+    cin>>t ;
+    bool flag = false ;
+    int count = 1 ; 
+    int min = INT_MAX ;
+    int index = 0 ;
+    int min2 = INT_MAX ; 
+    while(t--){
+        int a ; 
+        cin>>a ; 
+        if(a == min){
+            flag = true ;
+            min2 = a ; 
+        }
+        if(a < min){
+            min = a ;
+            index = count ; 
+        }
+        count++ ; 
+    }
+    
+    if(flag == true && min2 <= min) cout<<"Still Rozdil" ; 
+    else cout<<index ;
+
+    return 0;
+}

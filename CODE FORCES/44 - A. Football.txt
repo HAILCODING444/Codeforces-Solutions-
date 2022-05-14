@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    int t ; 
+    cin>>t ; 
+    int count1=0 , count2=0 ;
+    string a , b ;
+    cin>>a ; 
+    count1++ ; 
+    t-=1 ; 
+    while(t--){
+        string x ; 
+        cin>>x ;
+        if(x == a){
+            count1++ ; 
+        }else{
+            b = x; 
+            count2++ ; 
+        }
+    }
+    
+    if(count1 > count2){
+        cout<<a ; 
+    }else{
+        cout<<b ; 
+    }
+ 
+    return 0;
+}

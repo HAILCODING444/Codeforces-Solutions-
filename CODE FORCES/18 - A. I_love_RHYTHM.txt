@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    int t ; 
+    cin>>t ;
+    int max = INT_MIN ; 
+    int min = INT_MAX ; 
+    int count = 0 ; 
+    while(t--){
+        int a ; 
+        cin>>a ; 
+        if(a > max){
+            max = a ; 
+            count++ ;
+        }
+        if(a < min){
+            min = a ; 
+            count++ ; 
+        }
+    }
+    cout<<count-2;
+ 
+    return 0;
+}

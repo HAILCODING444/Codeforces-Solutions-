@@ -1,0 +1,20 @@
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t ; 
+    cin>>t ; 
+    while(t--){
+        string b ; 
+        cin>>b ; 
+        int n = b.size() ; 
+        if(n <= 10){
+            cout<<b<<endl ; 
+        }else{
+            cout<<b.at(0)<<(n-2)<<b.at(n-1)<<endl ; 
+        }
+    }
+}

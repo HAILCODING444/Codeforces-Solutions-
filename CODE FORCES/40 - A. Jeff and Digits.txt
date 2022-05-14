@@ -1,0 +1,42 @@
+ 
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    int t ; 
+    cin>>t ;
+    int five = 0 ;
+    int zero = 0 ; 
+    while(t--){
+        int a ; 
+        cin>>a;
+        if(a == 5){
+            five++; 
+        }else{
+          zero++ ;   
+        } 
+    }
+    
+    
+    if(five < 9 && zero > 0){
+        cout<<0 ;
+    }else if( zero == 0){
+        cout<<-1 ; 
+    } 
+    else{
+        while(five%9 != 0){
+            five-- ; 
+        }
+        while(five != 0){
+            cout<<5 ; 
+            five-- ; 
+        }
+        while(zero != 0){
+            cout<<0 ;
+            zero-- ; 
+        }
+    }
+    return 0;
+}
