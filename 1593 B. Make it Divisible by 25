@@ -1,0 +1,136 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+#define vector vector<ll> v  
+int sevenNDfive(string s){
+    int n = s.size() ; 
+    int ans = 0 ; 
+    
+    int idx =0 ; 
+    for(int i=n-1 ; i>=0 ; i--){
+        if(s[i] == '5'){
+            idx = i ; 
+            break ; 
+        }
+        ans +=1 ; 
+    }
+    
+    for(int i=idx-1 ; i>=0 ; i--){
+        if(s[i]== '7') break ; 
+        ans +=1 ; 
+    }
+    return ans ; 
+}
+int twoNDfive(string s){
+    int n = s.size() ; 
+    int ans = 0 ; 
+    
+    int idx =0 ; 
+    for(int i=n-1 ; i>=0 ; i--){
+        if(s[i] == '5'){
+            idx = i ; 
+            break ; 
+        }
+        ans +=1 ; 
+    }
+    
+    for(int i=idx-1 ; i>=0 ; i--){
+        if(s[i]== '2') break ; 
+        ans +=1 ; 
+    }
+    return ans ; 
+}
+int fiveNDzero(string s){
+    int n = s.size() ; 
+    int ans = 0 ; 
+    
+    int idx =0 ; 
+    for(int i=n-1 ; i>=0 ; i--){
+        if(s[i] == '0'){
+            idx = i ; 
+            break ; 
+        }
+        ans +=1 ; 
+    }
+    
+    for(int i=idx-1 ; i>=0 ; i--){
+        if(s[i]== '5') break ; 
+        ans +=1 ; 
+    }
+    return ans ; 
+}
+
+int twoZeros(string s){
+    int n = s.size() ; 
+    int ans = 0 ; 
+    
+    int idx =0 ; 
+    for(int i=n-1 ; i>=0 ; i--){
+        if(s[i] == '0'){
+            idx = i ; 
+            break ; 
+        }
+        ans +=1 ; 
+    }
+    
+    for(int i=idx-1 ; i>=0 ; i--){
+        if(s[i]== '0') break ; 
+        ans +=1 ; 
+    }
+    return ans ; 
+};
+int main()
+{
+    tc{
+        string s ; 
+        cin>>s ; 
+        
+        unordered_map<int , int> mp ; 
+        int n = s.size() ; 
+        int ans = 0 ;
+        
+        for(int i=0 ; i<n ; i++){
+            char c = s[i] ; 
+            mp[c-'0']++ ; 
+        }
+        
+        int  p =INT_MAX, q = INT_MAX, r = INT_MAX, x = INT_MAX ; 
+        if(mp.find(0) != mp.end()){
+            auto it = mp.find(0) ; 
+            if(it->second > 1){
+                p = twoZeros(s) ; 
+            }
+            
+            if(mp.find(5) != mp.end()){
+                q = fiveNDzero(s) ; 
+            }
+        }
+        
+        if(mp.find(5) != mp.end()  && mp.find(2) != mp.end()){
+            r = twoNDfive(s) ; 
+        }
+        
+        if(mp.find(5) != mp.end()  && mp.find(7) != mp.end()){
+            x = sevenNDfive(s) ; 
+        }
+        
+        ans = min(p , min(q , min(r , x)) ) ; 
+        cout<<ans<<nl ; 
+        
+    }
+    
+    // cout<<'0'-'0' ; 
+    return 0;
+}
