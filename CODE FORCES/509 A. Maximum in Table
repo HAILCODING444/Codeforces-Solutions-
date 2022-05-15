@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+int main()
+{
+    ll n ; 
+    cin>>n ; 
+    
+    ll ans ; 
+    
+    if(n ==0) ans =0 ; 
+    if(n ==1) ans =1 ;
+    
+    zeroMatrix ; 
+    
+    if(n >1){
+        for(int i=0 ; i<n ; i++){
+            v[0][i] = 1 ; 
+            v[i][0] = 1 ; 
+        }
+        
+        for(int i=1 ; i<n ; i++){
+            for(int j=1 ; j<n ; j++){
+                v[i][j] = v[i-1][j]+ v[i][j-1] ; 
+            }
+        }
+        
+        ans = v[n-1][n-1] ; 
+    }
+    
+    cout<<ans ; 
+
+    return 0;
+}
