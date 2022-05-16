@@ -1,0 +1,108 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+int main()
+{
+    tc{
+        ll n ; 
+        string s ; 
+        cin>>n>>s ; 
+        
+        if(n ==1){
+            if(s[0] != '?') cout<<s<<nl ;
+            else cout<<"B"<<nl ; 
+        }else if(n ==2){
+            if(s[0] =='?' && s[1] =='?'){
+                cout<<"BR"<<nl ; 
+            }else if(s[0] =='?' && s[1] =='R'){
+                cout<<"BR"<<nl ; 
+            }else if(s[0] =='?' && s[1] =='B'){
+                cout<<"RB"<<nl ; 
+            }else if(s[0] =='R' && s[1] =='?'){
+                cout<<"RB"<<nl ; 
+            }else if(s[0] =='B' && s[1] =='?'){
+                cout<<"BR"<<nl ; 
+            }else if(s[0] != '?' && s[0] != '?'){
+                cout<<s<<nl ; 
+            }
+        }else{
+            
+            char c ; 
+            ll idx ; 
+            bool flag = 0 ; 
+            for(ll i=0 ; i<n ; i++){
+                if(s[i] != '?'){
+                    c = s[i] ; 
+                    idx = i+1 ;
+                    flag = 1 ; 
+                    break ; 
+                }
+            }
+            
+            if(flag){
+            
+            if(c == 'R'  && idx %2 == 0){
+                s[0] = 'B' ; 
+            }else if(c == 'R'  && idx %2 != 0){
+                s[0] = 'R' ; 
+            }else if(c == 'B'  && idx %2 != 0){
+                s[0] = 'B' ;
+            }else if(c == 'B'  && idx %2 == 0){
+                s[0] = 'R' ;
+            }
+            
+            for(int i=1 ; i<n ; i++){
+                if(s[i] == '?'){
+                    if(s[i-1] == 'R') s[i] = 'B' ; 
+                    else s[i] = 'R' ; 
+                }
+            }
+            
+            cout<<s<<nl ;
+            }
+            
+            if(!flag){
+                s[0] = 'B' ; 
+                for(ll i=1 ; i<n ; i++){
+                    if(s[i-1] == 'R') s[i] = 'B' ; 
+                    else s[i] = 'R' ; 
+                }
+                
+                cout<<s<<nl ; 
+            }
+        }
+        // }else{
+        //     if(s[0] == '?'  && s[1] =='R'){
+        //         s[0] = 'B' ; 
+        //     }else if(s[0] =='?' && s[1] =='B'){
+        //         s[0]= 'R' ; 
+        //     }else if(s[0] =='?' && s[1] =='?'){
+        //         s[0] = 'B' ;  
+        //     }
+            
+        //     for(ll i=1 ; i<n ; i++){
+        //         if(s[i] == '?'){
+        //             if(s[i-1] == 'R') s[i] = 'B' ; 
+        //             else s[i] = 'R' ; 
+        //         }
+        //     }
+            
+        //     cout<<s<<nl ; 
+        // }
+    }
+    return 0;
+}
