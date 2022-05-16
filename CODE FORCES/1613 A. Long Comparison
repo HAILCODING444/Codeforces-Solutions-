@@ -1,0 +1,100 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+int main()
+{
+    tc{
+        // string x , y; 
+        // int p , q; 
+        // cin>>x>>p>>y>>q ; 
+        
+        // while(p--){
+        //     x += '0' ; 
+        // }
+        
+        // while(q--){
+        //     y += '0' ; 
+        // }
+        
+        string x , y ; 
+        ll p , q; 
+        cin>>x>>p>>y>>q ;
+        
+        int n = stoi(x) ; 
+        int m = stoi(y) ; 
+        
+        ll a = log10(n) +1 ; 
+        ll b = log10(m) +1 ; 
+        
+        a += p ; 
+        b += q ; 
+        
+        if(a > b) cout<<">"<<nl ; 
+        else if(b > a) cout<<"<"<<nl ;
+        else{
+            
+            ll k = x.size() ; 
+            ll f = y.size() ; 
+            
+            if(f > k){
+                ll g = k ; 
+                while(g < f){
+                    x += '0' ; 
+                    g++ ; 
+                }
+            }else if(k > f){
+                ll g = f ; 
+                while(g < k){
+                    y += '0' ; 
+                    g++ ; 
+                }
+            }
+            
+            ll ans =0; 
+            for(ll i=0 ; i<x.size() ; i++){
+                if(x[i] ==y[i]) continue ; 
+                if(x[i] > y[i]){
+                    ans = 1; 
+                    break ; 
+                }
+                if(y[i] > x[i]){
+                    ans = 2 ; 
+                    break ; 
+                }
+            }
+            
+            if(ans ==0) cout<<"="<<nl ; 
+            else if(ans ==1) cout<<">"<<nl ; 
+            else cout<<"<"<<nl ; 
+        }
+        // p = pow(10 , p) ; 
+        // q = pow(10 , q) ; 
+        
+        // i =f(p != 0){
+        //     x *=p ;
+        // }
+        
+        // if(q != 0){
+        //     y *= q ; 
+        // }
+        
+        // if(x > y) cout<<">"<<nl ; 
+        // else if(x ==y) cout<<"="<<nl ;
+        // else cout<<"<"<<nl ; 
+    }
+    return 0;
+}
