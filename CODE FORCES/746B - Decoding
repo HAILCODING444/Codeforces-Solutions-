@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+
+int main()
+{
+    // tc{
+        ll n ; 
+        string s ; 
+        cin>>n>>s ;
+        
+        string ans = "" ; 
+        
+        if(n ==1){
+            ans += s ; 
+        }else{
+            if(n %2 ==0){
+                ans += s[0] ;
+                bool flag = 0 ;
+                
+                for(ll i=1 ; i<n ; i++){
+                    if(!flag){
+                        ans += s[i] ; 
+                        flag = 1 ; 
+                    }else if(flag){
+                        string x = s[i]+ ans ; 
+                        ans = x ; 
+                        flag = 0 ; 
+                    }
+                }
+            }else{
+                ans += s[0] ; 
+                bool flag = 0 ;
+                
+                for(ll i=1 ; i<n ; i++){
+                    if(!flag){
+                        string x = "" ; 
+                        x += s[i] ; 
+                        x += ans ; 
+                        ans = x ; 
+                        flag = 1 ; 
+                    }else if(flag){
+                        ans += s[i] ; 
+                        flag = 0 ;  
+                    }
+                }
+                
+            }
+        }
+        
+        cout<<ans<<nl ; 
+    // }
+    return 0;
+}
