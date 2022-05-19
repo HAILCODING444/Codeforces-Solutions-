@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+
+int main()
+{
+    tc{
+        ll x , y , n;  
+        cin>>x>>y>>n ; 
+        
+        // ll x = 5 , y =0 , n = 4 ; 
+        ll k = n % x ; 
+        
+        ll ans = n; 
+        
+        if(k == y){
+            ans = n ; 
+        }else if(k > y){
+            ans -= (k - y) ;
+        }else if(y > k){
+            ans -= k ; 
+            ans -= x ;
+            ans += y ; 
+        }
+       
+       cout<<ans<<nl ; 
+        
+    }
+    return 0;
+}
