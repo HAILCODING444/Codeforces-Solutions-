@@ -1,0 +1,95 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+int main()
+{
+    tc{
+        string s ; 
+        cin>>s ; 
+        
+        bool flag = 0 ; 
+        
+        ll n = s.size() ; 
+        if(s[0] == s[n-1]){
+            flag = 0 ; 
+        }else{
+            for(ll i=1 ; i<n ; i++){
+                if(s[i] == s[0]){
+                    s[i] = '(' ; 
+                }
+            }
+            s[0] = '(' ; 
+            
+            for(ll i=1 ; i<n ; i++){
+                if(s[i] ==s[n-1]){
+                    s[i] = ')' ; 
+                }
+            }
+            
+            string a = s ; 
+            for(ll i=0 ; i<n ; i++){
+                if(a[i] != '('  && a[i] != ')') a[i] = '(' ; 
+            }
+            
+            stack<char> s1 ; 
+            for(ll i=0 ; i<n ; i++){
+                if(s1.empty()){
+                    if(a[i] == ')'){
+                        cout<<"NO"<<nl ;  
+                        goto cnt ; 
+                    }
+                    s1.push(a[i]) ; 
+                }else{
+                    if(a[i] != s1.top()) s1.pop() ; 
+                    else s1.push(a[i]) ; 
+                }
+            }
+            
+            if(s1.empty()){
+                flag =1 ; 
+            }else{
+                string b = s ; 
+                 for(ll i=0 ; i<n ; i++){
+                     if(b[i] != '('  && b[i] != ')') b[i] = ')' ;
+                 }
+                 stack<char> s2 ;
+              //    bool flag1 = 1 ; 
+                 for(ll i=0 ; i<n ; i++){
+                     if(s2.empty()){
+                         if(b[i] == ')'){
+                             cout<<"NO"<<nl ; 
+                             goto cnt ; 
+                         }
+                         s2.push(b[i]) ; 
+                     }else{
+                         if(b[i] != s2.top()) s2.pop() ;
+                         else s2.push(b[i]) ; 
+                     }
+                 }
+                 
+                 if(s2.empty()) flag =1 ; 
+            }
+        }
+        
+        if(flag) cout<<"YES"<<nl ; 
+        else cout<<"NO"<<nl ;
+        
+        cnt : 
+          continue ;
+    }
+    return 0;
+}
