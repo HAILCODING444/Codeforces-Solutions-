@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+int main()
+{
+    tc{
+        string s ; 
+        cin>>s ; 
+        
+        ll n = s.size() ; 
+        
+        if(s.size() == 1){
+            cout<<s<<nl ; 
+        }else{
+            map<char , int> mp ; 
+            for(ll i=0 ; i<n-1 ; i++){
+                if(s[i] != s[i+1]){
+                    mp[s[i]]++ ; 
+                }else if(s[i] == s[i+1]){
+                    i++ ; 
+                }
+            }
+            
+            char c = s[n-1] ; 
+            
+            if(s[n-1] != s[n-2]) mp[c]++ ; 
+            else{
+                ll cnt =1 ;
+                ll i = n-2 ; 
+                while(s[i] == s[i+1]){
+                    cnt+=1  ; 
+                    i-=1  ; 
+                }
+                
+                if(cnt %2 != 0) mp[c]++ ; 
+            
+            }
+            
+            if(!mp.empty()){
+                for(auto &i :mp){
+                    cout<<i.first ;
+                }
+            }
+            cout<<nl ; 
+        }
+    } 
+    
+    return 0;
+}
+
