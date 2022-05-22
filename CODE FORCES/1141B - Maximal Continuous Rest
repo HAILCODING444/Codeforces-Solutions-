@@ -1,0 +1,82 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+void sieve(vector<bool> &v , ll n){
+    for(ll i=0 ; i< sqrt(n) ; i++){
+        if(v[i]){
+            for(ll j=i*i ; j<n ; j+=i){
+                v[j] = false ; 
+            }
+        }
+    }
+    // for(ll i=0 ; i<v.size() ; i++) cout<<v[i]<<nl ;
+}
+
+
+int main()
+{
+    // tc{
+        
+        ll n ; 
+        cin>>n; 
+
+        vector<ll> v ; 
+        
+        for(ll i=0 ; i<n ; i++){
+            ll x ; 
+            cin>>x ; 
+            v.pb(x) ; 
+        }
+        
+        ll x =0 , y = n-1 ; 
+        
+        ll ans =0 ; 
+        if((v[x] == v[y])  && v[x] != 0){
+            ll i=0 ; 
+            while(1){
+                if(v[i] != 1) break ;
+                ans +=1 ; 
+                i++ ; 
+            }
+            
+            ll j = n-1 ; 
+            while(1){
+                if(v[j] != 1) break ;
+                ans +=1 ; 
+                j-- ; 
+            }
+        }
+            ll maxi =0 ;
+            ll cnt = 0 ; 
+            for(ll i=0 ; i<n ; i++){
+                if(v[i] == 1){
+                    cnt+= 1 ; 
+                    maxi = max(maxi , cnt) ; 
+                }else if(v[i] == 0){
+                    maxi = max(maxi , cnt) ; 
+                    cnt =0 ; 
+                }
+            }
+            
+            ans = max(maxi , ans) ; 
+        
+        
+        cout<<ans<<nl ; 
+    // }
+    return 0;
+}
+  
