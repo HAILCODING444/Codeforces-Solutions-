@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+void sieve(vector<bool> &v , ll n){
+    
+}
+
+
+int main()
+{
+    tc{
+        ll n , k ; 
+        cin>>n>>k ; 
+        
+        string s ; 
+        cin>>s ; 
+        
+        if(2*k +1  > n){
+            cout<<"NO"<<nl ; 
+        }else{
+            string a = "" , b = "" ; 
+            
+            for(ll i=0 ; i<k ; i++){
+                a += s[i] ; 
+            }
+            
+            for(ll i=n-1 ; i >= n-k ; i--){
+                b += s[i] ; 
+            }
+            
+            if(a == b) cout<<"YES"<<nl ; 
+            else cout<<"NO"<<nl ; 
+        }
+        
+    }
+    return 0;
+}
