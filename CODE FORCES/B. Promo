@@ -1,0 +1,90 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+void sieve(vector<bool> &v , ll n){
+    for(ll i=0 ; i< sqrt(n) ; i++){
+        if(v[i]){
+            for(ll j=i*i ; j<n ; j+=i){
+                v[j] = false ; 
+            }
+        }
+    }
+    // for(ll i=0 ; i<v.size() ; i++) cout<<v[i]<<nl ;
+}
+
+
+int main()
+{
+//      tc{
+        ll n , q; 
+        cin>>n>>q ;
+        
+        vector<ll> v ; 
+        for(ll i=0 ; i<n ; ++i){
+                ll x ; 
+                cin>>x ; 
+                v.pb(x) ;
+        }
+        
+        sort(v.begin() , v.end()) ; 
+        
+        // for(ll i=0 ; i<n ; ++i){
+        //         cout<<v[i]<<nl ; 
+        // }
+        
+        vector<ll> pre; 
+        for(ll i=0 ; i<n ; ++i){
+                pre.pb(v[i]) ; 
+        }
+        
+        for(ll i=1 ; i<n ; ++i){
+                pre[i] += pre[i-1] ; 
+        }
+        
+        // for(ll i=0 ; i<n ; ++i){
+        //         cout<<pre[i]<<" "<<nl ; 
+        // }
+        while(q--){
+                ll x , y ; 
+                cin>>x>>y ; 
+                // ll sum =0 ; 
+                // vector<ll> a ; 
+                // for(ll i=n-1 ; i>=n-x ; --i){
+                //         a.pb(v[i]) ;
+                // }
+                
+                // sort(a.begin() , a.end()) ; 
+                
+                // for(ll i=0 ; i<y ; ++i){
+                //         sum += a[i] ; 
+                // }
+                
+                ll sum ; 
+                
+                ll i = n-x ; 
+                ll j = i+ y-1 ; 
+                if(i > 0){
+                        sum = pre[j] - pre[i-1] ; 
+                }else{
+                        sum = pre[j] ; 
+                }
+                // sum = pre[j] - pre[i] ; 
+                cout<<sum<<nl ; 
+        }
+//     }
+    return 0;
+}
