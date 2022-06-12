@@ -1,0 +1,106 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+void sieve(vector<bool> &v , ll n){
+    for(ll i=0 ; i< sqrt(n) ; i++){
+        if(v[i]){
+            for(ll j=i*i ; j<n ; j+=i){
+                v[j] = false ; 
+            }
+        }
+    }
+    // for(ll i=0 ; i<v.size() ; i++) cout<<v[i]<<nl ;
+}
+
+
+int main()
+{
+     tc{
+        ll n ; 
+        cin>>n ; 
+        
+        if(n == 2){
+                cout<<-1<<nl ; 
+        }else if(n == 1){
+                cout<<1<<nl ; 
+        }else{
+                vector<vector<ll>> v(n , vector<ll>(n , -1)) ; 
+                ll cnt =1 ; 
+                for(ll i=0 ; i<n ; ++i){
+                        v[i][i] = cnt ; 
+                        cnt +=1 ; 
+                }
+                
+                for(ll i=0 ; i<n ; ++i){
+                        if(v[i][n-1-i] == -1){
+                                v[i][n-1-i] = cnt ;
+                                cnt +=1 ;
+                        } 
+                }
+                
+                ll k =1 ; 
+                ll i =1 , j=0 ; 
+                while(i != n-1 || j != 0){
+                        if(v[j][i] == -1){
+                                v[j][i] = cnt ; 
+                                cnt +=1 ; 
+                        }
+                        
+                        if(i == n-1){
+                                i = k+1 ; 
+                                k +=1 ; 
+                                j = 0 ; 
+                        }
+                        else{
+                                i +=1 ; 
+                                j +=1 ;
+                        } 
+                }
+                
+                
+                k =1 ; 
+                i=1 , j=0 ; 
+                while(i != n-1 || j != 0){
+                        if(v[i][j] == -1){
+                                v[i][j] = cnt ; 
+                                cnt +=1 ; 
+                        }
+                        
+                        if(i == n-1){
+                                i = k+1 ; 
+                                k +=1 ; 
+                                j = 0 ; 
+                        }
+                        else{
+                                i +=1 ; 
+                                j +=1 ;
+                        } 
+                }
+                
+         
+                for(ll i=0 ; i<n ; ++i){
+                        for(ll j=0 ; j<n ; ++j){
+                                cout<<v[i][j]<<" " ; 
+                        }
+                        cout<<nl ; 
+                }
+                
+                // cout<<nl<<nl ; 
+        }
+    }
+    return 0;
+}
