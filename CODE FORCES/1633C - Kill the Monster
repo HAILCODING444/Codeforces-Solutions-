@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+
+void sieve(vector<bool> &v , ll n){
+    for(ll i=0 ; i< sqrt(n) ; i++){
+        if(v[i]){
+            for(ll j=i*i ; j<n ; j+=i){
+                v[j] = false ; 
+            }
+        }
+    }
+    // for(ll i=0 ; i<v.size() ; i++) cout<<v[i]<<nl ;
+}
+
+void input(ll n , vector<ll> &v){
+        for(ll i=0 ; i<n ; ++i){
+                cin>>v[i] ;  
+        }
+}
+
+int main()
+{
+     tc{
+        ll hc , dc , hm , dm; 
+        cin>>hc>>dc>>hm>>dm ;
+        
+        ll k , w ,a ; 
+        cin>>k>>w>>a ; 
+        
+        ll M = hc/dm ; 
+        if(hc%dm > 0) M +=1 ; 
+        
+        ll Ch = hm / dc ; 
+        if(hm % dc > 0) Ch +=1 ; 
+        
+        bool flag =0 ; 
+        if(Ch <= M){
+                flag =1 ; 
+        }else{
+                hc += (k*a) ; 
+                ll M = hc/dm ;
+                if(hc%dm > 0) M +=1 ; 
+                
+                if(Ch <= M){
+                        flag = 1; 
+                }else{
+                        for(ll i=1 ; i<= k ; ++i){
+                                hc -= a ; 
+                                M = hc/dm ; 
+                                if(hc%dm >0) M +=1 ; 
+                                dc += w ; 
+                                Ch = hm / dc ;
+                                if(hm % dc > 0) Ch +=1 ;
+                                if(Ch <= M){
+                                        flag =1 ; 
+                                        break ; 
+                                }
+                        }
+                }
+        }
+        
+        if(flag) cout<<"YES"<<nl ; 
+        else cout<<"NO"<<nl ; 
+    }
+    return 0;
+}
