@@ -1,0 +1,114 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long int 
+#define mp make_pair
+#define pb push_back
+#define tc int t; cin >> t; while(t--)
+#define imax INT_MAX
+#define imin INT_MIN
+#define llmax LLONG_MAX
+#define llmin LLONG_MIN
+#define nl "\n"
+#define pminheap priority_queue<pair<int, int> , vector<pair<int , int>> , greater<pair<int , int>>>
+#define minheap priority_queue<int , vector<int> , greater<int>>
+#define maxheap priority_queue<int>
+#define zeroMatrix vector<vector<int>> v(n , vector<int>(n , 0))
+#define negMatrix vector<vector<int>> v(n , vector<int>(n , -1)) 
+#define all(v) v.begin() , v.end() 
+
+void sieve(vector<bool> &v , ll n){
+    for(ll i=0 ; i< sqrt(n) ; i++){
+        if(v[i]){
+            for(ll j=i*i ; j<n ; j+=i){
+                v[j] = false ; 
+            }
+        }
+    }
+    // for(ll i=0 ; i<v.size() ; i++) cout<<v[i]<<nl ;
+}
+
+void input(ll n , vector<ll> &v){
+        for(ll i=0 ; i<n ; ++i){
+                cin>>v[i] ; 
+        }
+}
+
+int main()
+{
+     ios_base::sync_with_stdio(false);
+     cin.tie(NULL);
+     cout.tie(NULL);
+     tc{
+        ll n ; 
+        cin>>n ; 
+        
+        string a ; 
+        cin>>a ; 
+        
+        bool flag = 1 ; 
+        
+        if(a[0] != '9') flag =0 ; 
+        
+        if(flag){
+                ll f = n ; 
+                string k = "" ; 
+                for(ll i=0 ; i<n ; ++i){
+                        k += to_string(('9'-'0')-(a[i]-'0')) ; 
+                }
+                
+                string j = "" ; 
+                for(ll i=0 ; i<n-1 ; ++i){
+                        j += '1' ; 
+                }
+                
+        
+                j += '2' ; 
+        
+                
+                string ans = "" ; 
+                
+                char carry = '0' ; 
+                for(ll i=n-1 ; i >= 0 ; --i){
+                        string c = to_string((k[i]-'0') + (j[i]-'0' )+ (carry-'0'));
+                        ll o = stoi(c) ; 
+                        if(o >= 10){
+                                carry = '1' ;      
+                                string b= to_string(o%10) ; 
+                                ans += b ; 
+                        }else{
+                                ans += c ; 
+                                carry = '0' ; 
+                        }
+                }
+                
+                // ans += to_string(('1'-'0') + (carry-'0')) ; 
+                
+                reverse(all(ans)) ; 
+                
+                cout<<ans<<nl ; 
+        }else{
+                string k = "" ; 
+                for(ll i=0 ; i<n ; ++i){
+                        k += '9' ; 
+                }
+                
+                string ans = "" ; 
+ 
+                for(ll i=n-1 ; i>=0 ; --i){
+                     ans = ans + to_string(k[i] - a[i]) ;    
+                }
+                
+                reverse(ans.begin() , ans.end()) ; 
+                
+                bool flag1 =1 ; 
+                for(ll i=0 ; i<ans.size() ; ++i){
+                        if(ans[i] != '0' ) flag1 =0 ; 
+                        if(ans[i] == '0' && flag1) continue ; 
+                        else cout<<ans[i] ; 
+                }
+                cout<<nl ; 
+        }
+    }
+    return 0;
+}
